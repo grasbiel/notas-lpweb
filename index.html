@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+    <!--Styles-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&     display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Cadastro de Notas</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="" alt="" width="30" height="24" class="d-inline-block align-top">
+                Cadastro de notas
+              </a>
+            </div>
+          </nav>
+    </header>
+
+    <main class="container">
+        <section id="balance">
+            <h2 class="sr-only">Cadastro de notas</h2>
+
+            <div class="card">
+                <h3>
+                    <span>Entradas</span>
+                    <img src="./assets/income.svg" alt="Imagem de ganho">
+                </h3>
+                <p id="incomeDisplay"></p>
+            </div>
+            <div class="card">
+                <h3>
+                    <span>Saídas</span>
+                    <img src="./assets/expense.svg" alt="Imagem de gasto"> 
+                </h3>
+                <p id="expenseDisplay"></p>
+            </div>
+
+            <div class="card total">
+                <h3>
+                    <span>Total</span>
+                    <img src="./assets/total.svg" alt="Imagem de total">
+                </h3>
+                <p id="totalDisplay"></p>
+            </div>
+
+            
+        </section>
+
+        <section id="transaction">
+            <h2 class="sr-only">Notas</h2>
+
+            <a href="#" 
+            onclick="Modal.open()"
+            class="button new">
+            + Nova transação </a>
+            <table id="data-table">
+                <thead> 
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Frequência</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    
+                </tbody>                
+            </table>
+        </section>
+    </main>
+    
+    <div class="modal-overlay">
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Nota</h2>
+                <form action="" onsubmit ="Form.submit(event)">
+                    <div class="input-group">
+                        <label class="sr-only" for="description">Aluno</label>
+                        <input type="text" id="description" name="description" placeholder="aluno">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="nota1">Valor</label>
+                        <input type="number" step="0.00" id="nota1" name="nota1" placeholder="0,00">
+                        
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="nota2">Valor</label>
+                        <input type="number" step="0.00" id="nota2" name="nota2" placeholder="0,00">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="frequencia">Valor</label>
+                        <input type="number" step="0.00" id="frequencia" name="frequencia" placeholder="0,00">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Data</label>
+                        <input type="date" id="date" name="date"> 
+                    </div>
+
+                    <div class="input-group actions">
+                        <a href="#" onclick="Modal.close()" class="button cancel" 
+                        >Cancelar</a>
+                        <button>Salvar</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+        
+    <footer>
+        <p>Cadastro de notas</p>
+    </footer>    
+
+    <script src="script.js">
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+</body>
+</html>
