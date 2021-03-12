@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
-    <!--Styles-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&     display=swap" rel="stylesheet">
@@ -13,16 +11,16 @@
 
     <title>Cadastro de Notas</title>
 </head>
+
+
 <body>
     <header>
-        <nav class="navbar navbar-light bg-primary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img src="" alt="" width="30" height="24" class="d-inline-block align-top">
+        <div class="" id="topo">
+              <a class="" href="#">
                 Cadastro de notas
               </a>
-            </div>
-          </nav>
+        </div>
+        
     </header>
 
     <main class="container">
@@ -70,12 +68,29 @@
                         <th>Nota 2</th>
                         <th>Médias</th>
                         <th>Frequência</th>
+                        <td>Situação</td>
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    
+                    <tr>
+                        <td>Gabriel</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>8,5</td>
+                        <td>85%</td>
+                        <td>Aprovado</td>
+                    </tr>
+
+                    <tr>
+                        <td>Neemias</td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>90%</td>
+                        <td>Aprovado</td>
+                    </tr>
                 </tbody>                
             </table>
         </section>
@@ -87,23 +102,23 @@
                 <h2>Nova Nota</h2>
                 <form action="" onsubmit ="Form.submit(event)">
                     <div class="input-group">
-                        <label class="sr-only" for="description">Aluno</label>
-                        <input type="text" id="description" name="description" placeholder="aluno">
+                        <label class="" for="description">Aluno: </label>
+                        <input type="text" id="description" name="description" placeholder="">
                     </div>
 
                     <div class="input-group">
-                        <label class="sr-only" for="nota1">Valor</label>
+                        <label class="" for="nota1">Primeira nota: </label>
                         <input type="number" step="0.00" id="nota1" name="nota1" placeholder="0,00">
                         
                     </div>
 
                     <div class="input-group">
-                        <label class="sr-only" for="nota2">Valor</label>
+                        <label class="" for="nota2">Segunda nota: </label>
                         <input type="number" step="0.00" id="nota2" name="nota2" placeholder="0,00">
                     </div>
 
                     <div class="input-group">
-                        <label class="sr-only" for="frequencia">Valor</label>
+                        <label class="" for="frequencia">Frequencia: </label>
                         <input type="number" step="0.00" id="frequencia" name="frequencia" placeholder="0,00">
                     </div>
 
@@ -130,7 +145,6 @@
     <script src="script.js">
         
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
 </body>
 </html>
