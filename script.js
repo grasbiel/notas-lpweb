@@ -92,19 +92,22 @@ const DOM = {
 
         DOM.transactionsContainer.appendChild(tr);
     },
+
     innerHTMLTransaction(transaction, index) {
-        const CSSclass = transaction.amount > 0 ? "income" : "expense";
+        const CSSclass = transaction.media > 70 ? "income" : "expense";
         
-        const image = transaction.amount > 0 ? "./assets/plus.svg" : "./assets/minus.svg";
+        const image = transaction.media > 70 ? "./assets/plus.svg" : "./assets/minus.svg";
         
-        const amount = Utils.formatCurrency(transaction.amount);
+        //const amount = Utils.formatCurrency(transaction.amount);
 
         const html = 
         ` 
             <td class="description"> ${transaction.description} </td>
-            <td class="${CSSclass}"> ${amount} </td>
+            <td class="nota1"> ${transaction.nota1} </td>
+            <td class="nota2"> ${transaction.nota2} </td>
+            <td class="${CSSclass}"> ${transaction.media}</td>
+            <td class="frequencia"> ${transaction.frequencia}  </td>
             <td class="date">${transaction.date} </td>
-            <td class="media">Média</td>
             <td>
                 <img onclick="Transaction.remove(${index})" src="${image}" alt="Remover transação">
             </td>
@@ -114,11 +117,12 @@ const DOM = {
     },
 
     updateBalance() {
-        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes());
+        /*document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes());
 
         document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency(Transaction.expenses());
 
         document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total());
+        */
     },
 
     clearTransactions() {
@@ -131,6 +135,11 @@ const Utils = {
         value = value*100;
 
         return Math.round(value);
+    },
+    
+    calculaMedia(value1, value2) {
+        const result = Number(value1)/2 + Number(value2)/2;
+        return Math.round(result)
     },
 
     formatDate(date){
@@ -157,45 +166,55 @@ const Utils = {
 
 const Form = {
     description: document.querySelector('input#description'),
-    amount: document.querySelector('input#amount'),
     date: document.querySelector('input#date'),
+    nota1: document.querySelector('input#nota1'),
+    nota2: document.querySelector('input#nota2'),
+    frequencia: document.querySelector('input#frequencia'),
+    media : 0.0,
 
     getValues() {
         return {
             description: Form.description.value,
-            amount: Form.amount.value,
-            date: Form.date.value
+            nota1: Form.nota1.value,
+            nota2: Form.nota2.value,
+            date: Form.date.value,
+            frequencia: Form.frequencia.value,
+            media : Utils.calculaMedia(Form.nota1.value, Form.nota2.value)
         }
     },
-    
-    formatValues() {
-        let {description, amount, date} = Form.getValues();
 
-        amount = Utils.formatAmount(amount);
+    formatValues() {
+        let {description, nota1, nota2, frequencia, date, media} = Form.getValues();
 
         date = Utils.formatDate(date);
 
-        console.log(date);
-
         return {
             description,
-            amount,
-            date
+            nota1,
+            nota2,
+            frequencia,
+            date,
+            media
         }
     },
 
     clearFields() {
         Form.description.value = "";
-        Form.amount.value ="";
         Form.date.value = "";
+        Form.nota1.value = "";
+        Form.nota2.value = "";
+        Form.frequencia.value = "";
+        Form.media.value = "";
     },
 
     validateFields() {
-        const {description, amount, date} = Form.getValues();
+        const {description, date, nota1, nota2, frequencia} = Form.getValues();
 
         if (description.trim() === "" || 
-            amount.trim() === "" ||
-            date.trim()=== "") {
+            date.trim()=== "" ||
+            nota1.trim() === "" ||
+            nota2.trim() === "" ||
+            frequencia.trim() === "") {
                 throw new Error("Por favor, preencha todos os campos");
             }
     },
