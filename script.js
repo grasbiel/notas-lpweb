@@ -94,9 +94,9 @@ const DOM = {
     },
 
     innerHTMLTransaction(transaction, index) {
-        const CSSclass = transaction.media > 70 ? "income" : "expense";
+        const CSSclass = transaction.media >= 70 ? "income" : "expense";
         
-        const image = transaction.media > 70 ? "./assets/plus.svg" : "./assets/minus.svg";
+        const image = transaction.media >= 70 ? "./assets/plus.svg" : "./assets/minus.svg";
         
         //const amount = Utils.formatCurrency(transaction.amount);
 
@@ -217,6 +217,14 @@ const Form = {
             frequencia.trim() === "") {
                 throw new Error("Por favor, preencha todos os campos");
             }
+        
+        if (nota1 > 100 || nota1 < 0 || nota2 > 100 || nota2 < 0 || frequencia < 0 || frequencia > 100) {
+            throw new Error ("Intervalor permitido: 0 a 100");
+        }
+
+        
+
+        
     },
 
     submit(event) {   
