@@ -44,7 +44,7 @@ const Transaction = {
     },
     
     incomes () {
-        //somar as entradas
+        
 
         let income = 0;
 
@@ -99,6 +99,7 @@ const DOM = {
         const image = transaction.media >= 70 ? "./assets/plus.svg" : "./assets/minus.svg";
         
         //const amount = Utils.formatCurrency(transaction.amount);
+        const situacao = Utils.isAprovado(transaction.frequencia, transaction.media);
 
         const html = 
         ` 
@@ -107,6 +108,7 @@ const DOM = {
             <td class="nota2"> ${transaction.nota2} </td>
             <td class="${CSSclass}"> ${transaction.media}</td>
             <td class="frequencia"> ${transaction.frequencia}  </td>
+            <td class="situacao"> ${situacao} </td>
             <td class="date">${transaction.date} </td>
             <td>
                 <img onclick="Transaction.remove(${index})" src="${image}" alt="Remover transação">
@@ -147,6 +149,16 @@ const Utils = {
         return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
     },
 
+    isAprovado (frequencia, media) {
+        if (media >= 70 && frequencia >= 70) {
+            return "Aprovado";
+        }
+        
+        else {
+            return "Reprovado";
+        }
+    },
+
     formatCurrency (value) {
 
        const signal = Number(value) < 0 ? "-" : ""
@@ -169,6 +181,7 @@ const Form = {
     date: document.querySelector('input#date'),
     nota1: document.querySelector('input#nota1'),
     nota2: document.querySelector('input#nota2'),
+    situacao: "",
     frequencia: document.querySelector('input#frequencia'),
     media : 0.0,
 
@@ -179,12 +192,12 @@ const Form = {
             nota2: Form.nota2.value,
             date: Form.date.value,
             frequencia: Form.frequencia.value,
-            media : Utils.calculaMedia(Form.nota1.value, Form.nota2.value)
+            media: Utils.calculaMedia(Form.nota1.value, Form.nota2.value)
         }
     },
 
     formatValues() {
-        let {description, nota1, nota2, frequencia, date, media} = Form.getValues();
+        let {description, nota1, nota2, frequencia, date, media, situacao} = Form.getValues();
 
         date = Utils.formatDate(date);
 
@@ -194,6 +207,7 @@ const Form = {
             nota2,
             frequencia,
             date,
+            situacao,
             media
         }
     },
@@ -219,7 +233,7 @@ const Form = {
             }
         
         if (nota1 > 100 || nota1 < 0 || nota2 > 100 || nota2 < 0 || frequencia < 0 || frequencia > 100) {
-            throw new Error ("Intervalor permitido: 0 a 100");
+            throw new Error ("Intervalo permitido: 0 a 100");
         }
 
         
