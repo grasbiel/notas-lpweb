@@ -74,9 +74,28 @@ const Transaction = {
         // somar a uma variavel e retorná-la
         return expense;
     },
-    total() {
-        //total de entradas e saídas
-        return Transaction.incomes() - Transaction.expenses();
+  
+    aprovados() {
+        //total de aprovados
+        let aprovados = 1;
+
+        Transaction.all.forEach((transaction) => {
+            if (transaction.situacao.trim() === "Aprovado") {
+                this.aprovados += 1;
+            }
+        })
+    },
+
+    reprovados() {
+        //total de reprovados
+        let reprovados = 1;
+
+        Transaction.all.forEach((transaction) => {
+    
+            if ( transaction.situacao.trim() === "Reprovado") {
+                this.reprovados += 1;
+            }
+        })
     }
 }
 
@@ -98,16 +117,21 @@ const DOM = {
         
         const image = transaction.media >= 70 ? "./assets/plus.svg" : "./assets/minus.svg";
         
-        //const amount = Utils.formatCurrency(transaction.amount);
         const situacao = Utils.isAprovado(transaction.frequencia, transaction.media);
+
+        const frequencia = Utils.formatFrequencia(transaction.frequencia);
+
+        const nota1 = Utils.formatDecimal(transaction.nota1);
+
+        const nota2 = Utils.formatDecimal(transaction.nota2);
 
         const html = 
         ` 
-            <td class="description"> ${transaction.description} </td>
-            <td class="nota1"> ${transaction.nota1} </td>
-            <td class="nota2"> ${transaction.nota2} </td>
+            <td class="nome"> ${transaction.description} </td>
+            <td class="nota1"> ${nota1} </td>
+            <td class="nota2"> ${nota2} </td>
             <td class="${CSSclass}"> ${transaction.media}</td>
-            <td class="frequencia"> ${transaction.frequencia}  </td>
+            <td class="frequencia"> ${frequencia}  </td>
             <td class="situacao"> ${situacao} </td>
             <td class="date">${transaction.date} </td>
             <td>
@@ -125,6 +149,9 @@ const DOM = {
 
         document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total());
         */
+
+        document.getElementById('aprovadoDisplay').innerHTML = "Hello"
+        document.getElementById('reprovadoDisplay').innerHTML = "World!"
     },
 
     clearTransactions() {
@@ -133,6 +160,7 @@ const DOM = {
 }
 
 const Utils = {
+    
     formatAmount(value) {
         value = value*100;
 
@@ -150,29 +178,27 @@ const Utils = {
     },
 
     isAprovado (frequencia, media) {
+        const aprovado = "Aprovado";
+        const reprovado = "Reprovado";
         if (media >= 70 && frequencia >= 70) {
-            return "Aprovado";
+            return aprovado;
         }
         
         else {
-            return "Reprovado";
+            return reprovado;
         }
     },
 
-    formatCurrency (value) {
+    formatFrequencia(value) {
+        Utils.formatDecimal(value);
+        const signal = "%"
 
-       const signal = Number(value) < 0 ? "-" : ""
+        return value + signal;
+    },
 
-       value = String(value).replace(/\D/g,"")
-
-       value = Number(value) / 100
-
-       value = value.toLocaleString("pt-BR", {
-           style: "currency",
-           currency: "BRL"
-       })
-
-       return signal + value;
+    formatDecimal (value) {      
+        const decimal = parseFloat(value).toFixed(2);
+       return decimal;
     }
 }
 
@@ -181,28 +207,28 @@ const Form = {
     date: document.querySelector('input#date'),
     nota1: document.querySelector('input#nota1'),
     nota2: document.querySelector('input#nota2'),
-    situacao: "",
     frequencia: document.querySelector('input#frequencia'),
-    media : 0.0,
+    
 
     getValues() {
         return {
-            description: Form.description.value,
+            nome: Form.description.value,
             nota1: Form.nota1.value,
             nota2: Form.nota2.value,
             date: Form.date.value,
             frequencia: Form.frequencia.value,
-            media: Utils.calculaMedia(Form.nota1.value, Form.nota2.value)
+            media: Utils.calculaMedia(Form.nota1.value, Form.nota2.value),
+            situacao: Utils.isAprovado(Form.frequencia, Form.media.value)
         }
     },
 
     formatValues() {
-        let {description, nota1, nota2, frequencia, date, media, situacao} = Form.getValues();
+        let {nome, nota1, nota2, frequencia, date, media, situacao} = Form.getValues();
 
         date = Utils.formatDate(date);
 
         return {
-            description,
+            nome,
             nota1,
             nota2,
             frequencia,
@@ -213,7 +239,7 @@ const Form = {
     },
 
     clearFields() {
-        Form.description.value = "";
+        Form.nome.value = "";
         Form.date.value = "";
         Form.nota1.value = "";
         Form.nota2.value = "";
@@ -222,9 +248,9 @@ const Form = {
     },
 
     validateFields() {
-        const {description, date, nota1, nota2, frequencia} = Form.getValues();
+        const {description, date, nota1, nota2, frequencia, situacao, media} = Form.getValues();
 
-        if (description.trim() === "" || 
+        if (nome.trim() === "" || 
             date.trim()=== "" ||
             nota1.trim() === "" ||
             nota2.trim() === "" ||
