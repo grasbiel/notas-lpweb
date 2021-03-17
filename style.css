@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 html {
     font-size: 93.75%;
@@ -34,7 +35,7 @@ header {
     border-width: 0;
 }
 .container {
-    width: 70%;
+    width: 75%;
     margin: auto;
 }
 
@@ -111,7 +112,11 @@ header {
 }
 
 #topo {
+    width: 75%;
+    margin: auto;
+    background: hsl(189, 98%, 50%);
     color: #fff;
+    font-size: 30px;
     font-weight: 200;
 }
 
@@ -149,7 +154,7 @@ header {
 }
 
 .card.total{
-    background: #49aa26;
+    background: #01d9ff;
     color: white;
 }
 
@@ -157,7 +162,7 @@ header {
 #data-table {
     width: 100%;
     border-spacing: 0 0.5rem;
-    color: #969cb3;
+    color: #253883;
 }
 
 #transaction {
