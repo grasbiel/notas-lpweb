@@ -1,4 +1,4 @@
-class NotasController {
+class AlunosController {
     constructor () {
         let $ = document.querySelector.bind(document)
         this.inputNome = $('#nome')
@@ -17,7 +17,15 @@ class NotasController {
         this.mensagemView = new MensagemViews ($('#js-mensagem-view'))
         this.mensagemView.update(this.mensagem)
     }
+    
+    open () {
+        document.querySelector('.modal-overlay').classList.add('active');
+    }
 
+    close () {
+        document.querySelector('.modal-overlay').classList.remove('active');
+    }
+    
     adiciona (event) {
         event.preventDefault()
 
@@ -50,4 +58,6 @@ class NotasController {
 
         this.inputNome.focus()
     }
+
+    
 }

@@ -55,7 +55,7 @@
             <h2 class="sr-only">Notas</h2>
 
             <a href="#" 
-            onclick="Modal.open()"
+            onclick="AlunosController.open()"
             class="button new">
             + Cadastrar um aluno </a>
             <table id="data-table">
@@ -120,8 +120,16 @@
         <p>Cadastro de notas</p>
     </footer>    
 
-    <script src="script.js">
-        
+    <script src="js\app\models\Aluno.js"></script>
+    <script src="js\app\controllers\AlunosController.js"></script>
+    <script src="js\app\models\AlunosModel.js"></script>
+    <script src="js\app\models\Mensagem.js"></script>
+    <script src="js\app\views\AlunosView.js"></script>
+    <script src="js\app\views\MensagemViews.js"></script>
+    <script src="js\app\views\View.js"></script>
+
+    <script>
+        let alunoController = new AlunosController();
     </script>
     
 </body>
