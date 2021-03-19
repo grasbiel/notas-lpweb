@@ -8,9 +8,18 @@ class NegociacoesView extends View {
         
         
         return `
-            <td class="nome"> ${transaction.nome} </td>
-            <td class="nota1"> ${Utils.formatarDecimal(transaction.nota1)} </td>
-            <td class="nota2"> ${Utils.formatarDecimal(transaction.nota2)} </td>
+            ${model.getAlunos().map(aluno => `
+                <tr>
+                    <td class="nome"> ${aluno.nome} </td>
+                    <td class="nota1"> ${aluno.nota1} </td>
+                    <td class="nota2"> ${aluno.nota2} </td>
+                    <td class="${CSSclass}"> ${aluno.media}</td>
+                </tr>
+
+                
+            `
+            )}
+
             <td class="${CSSclass}"> ${Utils.formatarDecimal(transaction.media)}</td>
             <td class="frequencia"> ${transaction.frequencia}  </td>
             <td class="situacao"> ${situacao} </td>

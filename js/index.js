@@ -2,7 +2,6 @@
 
 var Fields = [
     document.querySelector('input#name'),
-    document.querySelector('input#date'),
     document.querySelector('input#nota1'),
     document.querySelector('input#nota2'),
     document.querySelector('input#frequencia'),
