@@ -21,6 +21,33 @@ class NotasController {
     adiciona (event) {
         event.preventDefault()
 
-        let aluno = this.
+        let aluno = this.Aluno();
+        this.alunosModels.adiciona(aluno)
+        this.alunosView.update(this.alunosModels)
+
+        this.clearFields();
+
+        this.mensagem.texto = `Aluno ${aluno.nome} foi adicionado com sucesso.`
+        this.mensagemView.update(this.mensagemView)
+    }
+
+    criaAluno () {
+        return new Aluno (
+           this.inputNome.value,
+           this.inputNota1.value,
+           this.inputNota2.value,
+           this.inputFrequencia.value
+        );
+    }
+
+    //limpa campos
+    clearFields () {
+        this.inputNome = ""
+        this.inputNota1 = ""
+        this.inputNota2 = ""
+        this.inputFrequencia = ""
+        this.inputProvaFinal = ""
+
+        this.inputNome.focus()
     }
 }
