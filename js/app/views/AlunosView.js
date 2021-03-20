@@ -82,6 +82,7 @@ class AlunosView extends View{
                     `).join('')}
                 </tbody>                
             </table>
+            </section>
         `
     }
 }
