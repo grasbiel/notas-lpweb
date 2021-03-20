@@ -12,7 +12,7 @@ class AlunosView extends View{
             <div class="card">
                 <h3>
                     <span>Aprovados</span>
-                    <img src="./assets/income.svg" alt="Imagem de ganho">
+                    <img src="./assets/aprovado.svg" alt="aprovados">
                 </h3>
                 <p id="aprovadosDisplay">${alunosModel.getAlunos().reduce((total, valor) => total + (valor.situacao == 'Aprovado' ? 1 : 0), 0)}</p>
             </div>
@@ -20,9 +20,9 @@ class AlunosView extends View{
             <div class="card">
                 <h3>
                     <span>Reprovados</span>
-                    <img src="./assets/expense.svg" alt="Imagem de gasto"> 
+                    <img src="./assets/reprovado.svg" alt="reprovados"> 
                 </h3>
-                <p id="reprovadosDisplay">${alunosModel.getAlunos().reduce((total, valor) => total + ( valor.situacao == 'REPROVADO' ? 1 : 0 ) , 0 )}</p>
+                <p id="reprovadosDisplay">${alunosModel.getAlunos().reduce((total, valor) => total + ( valor.situacao == 'Reprovado' ? 1 : 0 ) , 0 )}</p>
             </div>    
 
             <div class="card total">

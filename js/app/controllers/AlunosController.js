@@ -50,11 +50,11 @@ class AlunosController {
 
     //limpa campos
     clearFields () {
-        this._inputNome = ""
-        this._inputNota1 = ""
-        this._inputNota2 = ""
+        this._inputNome.value = ""
+        this._inputNota1.value = ""
+        this._inputNota2.value = ""
         this._inputProvaFinal.value= ""
-        this._inputFrequencia = ""
+        this._inputFrequencia.value = ""
     }
 
 
