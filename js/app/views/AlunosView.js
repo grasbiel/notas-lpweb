@@ -33,8 +33,8 @@ class AlunosView extends View{
                 <p id="mediasDisplay">
         
                 ${
-                    alunosModel.getAlunos().reduce((somaMedias, valor) => (somaMedias) + (valor.media), 0.0) 
-                    /alunosModel.getAlunos().reduce((iterador) => (iterador) + 1 , 0)
+                    (alunosModel.getAlunos().reduce((somaMedias, valor) => (somaMedias) + (valor.media), 0.0) 
+                    /alunosModel.getAlunos().reduce((iterador) => (iterador) + 1 , 0)).toFixed(2)
                 }
                 </p>
             </div> 
