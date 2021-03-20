@@ -36,6 +36,8 @@ class AlunosController {
         this.mensagemView.update(this.mensagemView)
 
         this.clearFields();
+
+        AlunosController.close();
     }
 
     criaAluno () {
@@ -56,9 +58,9 @@ class AlunosController {
         this._inputProvaFinal.value= ""
         this._inputFrequencia = ""
 
-
         this.inputNome.focus()
     }
 
+    
     
 }

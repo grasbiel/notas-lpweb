@@ -6,6 +6,49 @@ class AlunosView extends View{
 
     _template(alunosModel){
         return `
+        <section id="balance">
+            <h2 class="sr-only">Cadastro de notas</h2>
+            
+            <div class="card">
+                <h3>
+                    <span>Aprovados</span>
+                    <img src="./assets/income.svg" alt="Imagem de ganho">
+                </h3>
+                <p id="aprovadosDisplay">${alunosModel.getAlunos().reduce((total, valor) => total + (valor.situacao == 'Aprovado' ? 1 : 0), 0)}</p>
+            </div>
+            
+            <div class="card">
+                <h3>
+                    <span>Reprovados</span>
+                    <img src="./assets/expense.svg" alt="Imagem de gasto"> 
+                </h3>
+                <p id="reprovadosDisplay">${alunosModel.getAlunos().reduce((total, valor) => total + ( valor.situacao == 'REPROVADO' ? 1 : 0 ) , 0 )}</p>
+            </div>    
+
+            <div class="card total">
+                <h3>
+                    <span>Total</span>
+        
+                </h3>
+                <p id="mediasDisplay">
+                ${
+                    alunosModel.getAlunos().reduce((somaMedias, valor) => (somaMedias) + (valor.media), 0.0) 
+                    /alunosModel.getAlunos().reduce((iterador) => (iterador) + 1 , 0)
+                }
+                </p>
+            </div> 
+
+        </section>
+
+        <section id="transaction">
+            <h2 class="sr-only">Notas</h2>
+
+            <a href="#" 
+            onclick="AlunosController.open()"
+            class="button new">
+            + Cadastrar um aluno </a>
+            
+        
             <table id="data-table">
                 <thead> 
                     <tr>
