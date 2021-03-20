@@ -1,56 +1,37 @@
 class Aluno {
-    constructor (nome, nota1, nota2, frequencia) {
-        this.nome = nome
-        this.nota1 = nota1
-        this.nota2 = nota2
-        this.frequencia = frequencia
 
-        Object.frequencia(this)
+    constructor (nome, nota1, nota2, provaFinal, frequencia) {
+        this._nome = nome
+        this._nota1 = nota1
+        this._nota2 = nota2
+        this._frequencia = frequencia
+        this._provaFinal = provaFinal
+
+        Object.freeze(this)
     }
-
 
     get nome () {
-        return this.nome;
-    }
-
-    set nome (nome) {
-        this.nome = nome;
+        return this._nome;
     }
 
     get nota1() {
-        return this.nota1;
-    }
-
-    set nota1 (nota) {
-        this.nota1 = nota;
+        return this._nota1;
     }
 
     get nota2() {
-        return this.nota2;
-    }
-
-    set nota2 (nota) {
-        this.nota2 = nota;
+        return this._nota2;
     }
 
     get frequencia () {
-        return this.frequencia;
-    }
-
-    set frequencia (freq) {
-        this.frequencia = freq;
+        return this._frequencia;
     }
 
     get provaFinal () {
-        return this.provaFinal;
-    }
-
-    set provaFinal(prova) {
-        this.provaFinal = prova;
+        return this._provaFinal;
     }
 
     get media() {
-        return (Number(this.nota1) + Number(this.nota2)/2)
+        return (Number(this.nota1) + Number(this.nota2)) /2 ;
     }
 
 
@@ -60,11 +41,11 @@ class Aluno {
             return "Reprovado"
         }
 
-        if (this.frequencia>= 75 && media >=70) {
+        if (this.frequencia>= 75 && this.media >=70) {
             return "Aprovado"
         }
         else if (this.media >= 30 || this.media < 70) {
-            let mediaFinal = (Number(this.media) + Number(this.provaFinal)/2)
+            let mediaFinal = ((Number(this.media) + Number(this.provaFinal))/2)
 
             if (mediaFinal < 50) {
                 return "Reprovado"
@@ -76,4 +57,9 @@ class Aluno {
         } //fim else if
     } //Fim situacao
     
+
+    get img () {
+        let imagem = this.situacao === "Reprovado" ? "assets/minus.svg" : "assets/plus.svg"
+        return imagem
+    }
 }

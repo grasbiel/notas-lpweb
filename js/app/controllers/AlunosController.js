@@ -1,12 +1,14 @@
 class AlunosController {
     constructor () {
         let $ = document.querySelector.bind(document)
-        this.inputNome = $('#nome')
-        this.inputNota1 = $('#nota1')
-        this.inputNota2 = $('#nota2')
-        this.inputFrequencia = $('#frequencia')
-        this.inputProvaFinal = $('#provaFinal')
+        this._inputNome = $('#nome')
+        this._inputNota1 = $('#nota1')
+        this._inputNota2 = $('#nota2')
+        this._inputProvaFinal = $('#provaFinal')
+        this._inputFrequencia = $('#frequencia')
 
+
+        
         this.alunosModels = new AlunosModel()
 
         this.alunosView = new AlunosView($('#js-AlunoView'))
@@ -34,26 +36,26 @@ class AlunosController {
         this.mensagemView.update(this.mensagemView)
 
         this.clearFields();
-
-        
     }
 
     criaAluno () {
         return new Aluno (
-           this.inputNome.value,
-           this.inputNota1.value,
-           this.inputNota2.value,
-           this.inputFrequencia.value
+            this._inputNome.value,
+            this._inputNota1.value,
+            this._inputNota2.value,
+            this._inputProvaFinal.value,
+            this._inputFrequencia.value
         );
     }
 
     //limpa campos
     clearFields () {
-        this.inputNome = ""
-        this.inputNota1 = ""
-        this.inputNota2 = ""
-        this.inputFrequencia = ""
-        this.inputProvaFinal = ""
+        this._inputNome = ""
+        this._inputNota1 = ""
+        this._inputNota2 = ""
+        this._inputProvaFinal.value= ""
+        this._inputFrequencia = ""
+
 
         this.inputNome.focus()
     }

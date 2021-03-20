@@ -58,24 +58,11 @@
             onclick="AlunosController.open()"
             class="button new">
             + Cadastrar um aluno </a>
-            <table id="data-table">
-                <thead> 
-                    <tr>
-                        <th>Aluno</th>
-                        <th>Nota 1</th>
-                        <th>Nota 2</th>
-                        <th>Médias</th>
-                        <th>Frequência</th>
-                        <th>Situação</th>
-                        <th>Data</th>
-                        <th></th>
-                    </tr>
-                </thead>
 
-                <tbody id="js-AlunoView">
-                   
-                </tbody>                
-            </table>
+            <div id="js-AlunoView">
+            </div>
+
+
         </section>
     </main>
     
@@ -84,10 +71,11 @@
             <div id="form">
                 <h2>Cadastrar Aluno</h2>
                 <div id="js-mensagem-view"></div>
-                <form action="" onsubmit ="alunosController.adicion(event)">
+                
+                <form action="" onsubmit ="alunosController.adiciona(event)">
                     <div class="input-group">
-                        <label class="" for="name">Aluno: </label>
-                        <input type="text" id="name" name="name" placeholder="Nome">
+                        <label class="" for="nome">Aluno: </label>
+                        <input type="text" id="nome" name="nome" placeholder="Nome">
                     </div>
 
                     <div class="input-group">
@@ -99,6 +87,11 @@
                     <div class="input-group">
                         <label class="" for="nota2">Segunda nota: </label>
                         <input type="number" id="nota2" name="nota2" placeholder="0,00">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="" for="provaFinal">Prova Final: </label>
+                        <input type="number" id="provaFinal" name="provaFinal" placeholder="0,00">
                     </div>
 
                     <div class="input-group">
@@ -117,15 +110,13 @@
         </div>
     </div>
 
-    
-        
     <footer>
         <p>Cadastro de notas</p>
     </footer>    
 
     <script src="js\app\models\Aluno.js"></script>
-    <script src="js\app\models\AlunosModel.js"></script>
     <script src="js\app\controllers\AlunosController.js"></script>
+    <script src="js\app\models\AlunosModel.js"></script>
     <script src="js\app\views\View.js"></script>
     <script src="js\app\views\AlunosView.js"></script>
     <script src="js\app\models\Mensagem.js"></script>
