@@ -31,6 +31,7 @@ class AlunosView extends View{
         
                 </h3>
                 <p id="mediasDisplay">
+        
                 ${
                     alunosModel.getAlunos().reduce((somaMedias, valor) => (somaMedias) + (valor.media), 0.0) 
                     /alunosModel.getAlunos().reduce((iterador) => (iterador) + 1 , 0)

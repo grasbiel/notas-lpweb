@@ -29,12 +29,10 @@ class AlunosController {
     
     adiciona (event) {
         event.preventDefault()
+                
         this.alunosModels.adiciona(this.criaAluno())
         this.alunosView.update(this.alunosModels)
         
-        this.mensagem.texto = `Aluno ${aluno.nome} foi adicionado com sucesso.`
-        this.mensagemView.update(this.mensagemView)
-
         this.clearFields();
 
         AlunosController.close();
@@ -57,10 +55,8 @@ class AlunosController {
         this._inputNota2 = ""
         this._inputProvaFinal.value= ""
         this._inputFrequencia = ""
-
-        this.inputNome.focus()
     }
 
-    
+
     
 }
