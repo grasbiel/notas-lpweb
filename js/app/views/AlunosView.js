@@ -1,13 +1,17 @@
 class AlunosView extends View{
+    
     constructor(elemento) {
         super(elemento)
     }
 
-    template(alunosModel){
+    _template(alunosModel){
         
-        
-        
+
+
+
+
         return `
+        
             ${alunosModel.getAlunos().map(aluno => `
                 <tr>
                     <td class="nome"> ${aluno.getNome()} </td>
@@ -17,6 +21,8 @@ class AlunosView extends View{
                     <td class="situacao"> ${aluno.situacao()}</td>
                 </tr>
             `).join('')}
+
+        
         `
     }
 }

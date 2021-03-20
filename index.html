@@ -72,7 +72,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="js-AlunoView">
                    
                 </tbody>                
             </table>
@@ -83,7 +83,8 @@
         <div class="modal">
             <div id="form">
                 <h2>Cadastrar Aluno</h2>
-                <form action="" onsubmit ="Form.submit(event)">
+                <div id="js-mensagem-view"></div>
+                <form action="" onsubmit ="alunosController.adicion(event)">
                     <div class="input-group">
                         <label class="" for="name">Aluno: </label>
                         <input type="text" id="name" name="name" placeholder="Nome">
@@ -106,7 +107,7 @@
                     </div>
 
                     <div class="input-group actions">
-                        <a href="#" onclick="Modal.close()" class="button cancel" 
+                        <a href="#" onclick="AlunosController.close()" class="button cancel" 
                         >Cancelar</a>
                         <button>Salvar</button>
                     </div>
@@ -115,21 +116,23 @@
             
         </div>
     </div>
+
+    
         
     <footer>
         <p>Cadastro de notas</p>
     </footer>    
 
     <script src="js\app\models\Aluno.js"></script>
-    <script src="js\app\controllers\AlunosController.js"></script>
     <script src="js\app\models\AlunosModel.js"></script>
-    <script src="js\app\models\Mensagem.js"></script>
-    <script src="js\app\views\AlunosView.js"></script>
-    <script src="js\app\views\MensagemViews.js"></script>
+    <script src="js\app\controllers\AlunosController.js"></script>
     <script src="js\app\views\View.js"></script>
+    <script src="js\app\views\AlunosView.js"></script>
+    <script src="js\app\models\Mensagem.js"></script>
+    <script src="js\app\views\MensagemViews.js"></script>
 
     <script>
-        let alunoController = new AlunosController();
+        let alunosController = new AlunosController();
     </script>
     
 </body>

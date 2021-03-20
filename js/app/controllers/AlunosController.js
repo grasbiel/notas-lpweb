@@ -10,7 +10,6 @@ class AlunosController {
         this.alunosModels = new AlunosModel()
 
         this.alunosView = new AlunosView($('#js-AlunoView'))
-
         this.alunosView.update(this.alunosModels)
 
         this.mensagem = new Mensagem ();
@@ -18,25 +17,25 @@ class AlunosController {
         this.mensagemView.update(this.mensagem)
     }
     
-    open () {
+    static open () {
         document.querySelector('.modal-overlay').classList.add('active');
     }
 
-    close () {
+    static close () {
         document.querySelector('.modal-overlay').classList.remove('active');
     }
     
     adiciona (event) {
         event.preventDefault()
-
-        let aluno = this.Aluno();
-        this.alunosModels.adiciona(aluno)
+        this.alunosModels.adiciona(this.criaAluno())
         this.alunosView.update(this.alunosModels)
+        
+        this.mensagem.texto = `Aluno ${aluno.nome} foi adicionado com sucesso.`
+        this.mensagemView.update(this.mensagemView)
 
         this.clearFields();
 
-        this.mensagem.texto = `Aluno ${aluno.nome} foi adicionado com sucesso.`
-        this.mensagemView.update(this.mensagemView)
+        
     }
 
     criaAluno () {
